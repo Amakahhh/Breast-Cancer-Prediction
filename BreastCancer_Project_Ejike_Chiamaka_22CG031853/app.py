@@ -72,25 +72,34 @@ st.markdown("---")
 def load_model_artifacts():
     """Load pre-trained model, scaler, and selected features."""
     try:
-        # Define model directory - handle both local and deployment scenarios
-        if os.path.exists('./model'):
-            model_dir = './model'
-        elif os.path.exists('model'):
-            model_dir = 'model'
-        else:
-            st.error("Model directory not found!")
+        # Get the script directory and construct paths
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        model_dir = os.path.join(script_dir, 'model')
+        
+        # Verify model directory exists
+        if not os.path.exists(model_dir):
+            st.error(f"Model directory not found at: {model_dir}")
             st.stop()
         
         # Load model
         model_path = os.path.join(model_dir, 'breast_cancer_model.pkl')
+        if not os.path.exists(model_path):
+            st.error(f"Model file not found: {model_path}")
+            st.stop()
         model = joblib.load(model_path)
         
         # Load scaler
         scaler_path = os.path.join(model_dir, 'scaler.pkl')
+        if not os.path.exists(scaler_path):
+            st.error(f"Scaler file not found: {scaler_path}")
+            st.stop()
         scaler = joblib.load(scaler_path)
         
         # Load selected features
         features_path = os.path.join(model_dir, 'selected_features.pkl')
+        if not os.path.exists(features_path):
+            st.error(f"Features file not found: {features_path}")
+            st.stop()
         selected_features = joblib.load(features_path)
         
         return model, scaler, selected_features
