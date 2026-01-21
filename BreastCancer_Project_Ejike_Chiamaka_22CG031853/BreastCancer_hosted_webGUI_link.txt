@@ -2,5 +2,5 @@ Name: Ejike Chiamaka
 Matric Number: 22CG031853
 Machine Learning Algorithm Used: Support Vector Machine (SVM)
 Model Persistence Method Used: Joblib
-Live URL of the Hosted Application: https://breast-cancer-prediction-d8sawthorrbv72swsvtsel.streamlit.app
+Live URL of the Hosted Application: https://breast-cancer-prediction-jtna.onrender.com
 GitHub Repository Link: https://github.com/Amakahhh/Breast-Cancer-Prediction
